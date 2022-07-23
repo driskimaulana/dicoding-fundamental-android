@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ANDROID/dicoding/dicoding-fundamental-android/WonderfulIndonesia/app/src/main/res/layout/activity_detail.xml" value="0.22" />
         <entry key="..\:/ANDROID/dicoding/dicoding-fundamental-android/WonderfulIndonesia/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/ANDROID/dicoding/dicoding-fundamental-android/WonderfulIndonesia/app/src/main/res/layout/card_object_wisata.xml" value="0.25" />
+        <entry key="..\:/ANDROID/dicoding/dicoding-fundamental-android/WonderfulIndonesia/app/src/main/res/layout/card_object_wisata.xml" value="0.1" />
         <entry key="..\:/ANDROID/dicoding/dicoding-fundamental-android/WonderfulIndonesia/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/ANDROID/dicoding/dicoding-fundamental-android/WonderfulIndonesia/app/src/main/res/layout/object_wisata_gallery.xml" value="0.19895833333333332" />
+        <entry key="..\:/ANDROID/dicoding/dicoding-fundamental-android/WonderfulIndonesia/app/src/main/res/layout/review_row.xml" value="0.25" />
         <entry key="..\:/ANDROID/dicoding/dicoding-fundamental-android/WonderfulIndonesia/app/src/main/res/menu/navbar_menu.xml" value="0.2" />
       </map>
     </option>

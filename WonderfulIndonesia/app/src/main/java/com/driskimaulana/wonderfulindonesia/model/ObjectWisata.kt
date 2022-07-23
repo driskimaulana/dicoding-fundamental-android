@@ -1,7 +1,10 @@
 package com.driskimaulana.wonderfulindonesia.model
 
 import android.media.Rating
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class ObjectWisata(
 
     var idObjectWisata: Int = 0,
@@ -15,4 +18,4 @@ data class ObjectWisata(
     var openSchedule: String = "",
     var gallery: IntArray
 
-)
+) : Parcelable
