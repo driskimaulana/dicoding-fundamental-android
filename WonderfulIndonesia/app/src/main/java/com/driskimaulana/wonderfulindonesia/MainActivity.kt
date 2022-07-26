@@ -4,8 +4,11 @@ import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
+import com.driskimaulana.wonderfulindonesia.fragment.AboutFragment
+import com.driskimaulana.wonderfulindonesia.fragment.FavoriteFragment
 import com.driskimaulana.wonderfulindonesia.fragment.HomeFragment
+import com.driskimaulana.wonderfulindonesia.model.ObjectWisata
+import com.driskimaulana.wonderfulindonesia.utils.Utils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -18,21 +21,26 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.green_primary)))
         initView()
+        /*
+        create utils object that will use for the entire application because it's a singleton class
+         */
+        Utils.getInstance(this)
+
 
         showHomeFragment()
 
         navbar.setOnItemSelectedListener { item ->
             when(item.itemId){
                 R.id.menu_favorite -> {
-                    Toast.makeText(this, "Favorite Active", Toast.LENGTH_SHORT)
+                    showFavoriteFragment()
                     true
                 }
                 R.id.menu_home -> {
-                    Toast.makeText(this, "Home Selected", Toast.LENGTH_SHORT)
+                    showHomeFragment()
                     true
                 }
                 R.id.menu_about -> {
-                    Toast.makeText(this, "About Selected", Toast.LENGTH_SHORT)
+                    showAboutFragment()
                     true
                 }
                 else -> false
@@ -42,6 +50,39 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun showAboutFragment() {
+        supportActionBar?.title = "About Me"
+
+        val mFragment = supportFragmentManager
+
+        val aboutFragment = AboutFragment()
+
+        var fragment = mFragment.findFragmentByTag(AboutFragment::class.java.simpleName)
+
+        if(fragment !is AboutFragment)
+        {
+            mFragment.beginTransaction()
+                .replace(R.id.frame_activity, aboutFragment, AboutFragment::class.java.simpleName)
+                .commit()
+        }
+    }
+
+    private fun showFavoriteFragment() {
+        supportActionBar?.title = "Favorite Object Wisata"
+        val mFragmentManager = supportFragmentManager
+
+        val favoriteFragment = FavoriteFragment()
+
+        var fragment =mFragmentManager.findFragmentByTag(FavoriteFragment::class.java.simpleName)
+
+        if(fragment !is FavoriteFragment)
+        {
+            mFragmentManager.beginTransaction()
+                .replace(R.id.frame_activity, favoriteFragment, FavoriteFragment::class.java.simpleName)
+                .commit()
+        }
+    }
+
     private fun showHomeFragment()
     {
         supportActionBar?.title = "List Object Wisata"
@@ -49,12 +90,12 @@ class MainActivity : AppCompatActivity() {
 
         val homeFragment = HomeFragment()
 
-        var fragment =mFragmentManager.findFragmentByTag(HomeFragment::class.java.simpleName)
+        var fragment = mFragmentManager.findFragmentByTag(HomeFragment::class.java.simpleName)
 
         if(fragment !is HomeFragment)
         {
             mFragmentManager.beginTransaction()
-                .add(R.id.frame_activity, homeFragment, HomeFragment::class.java.simpleName)
+                .replace(R.id.frame_activity, homeFragment, HomeFragment::class.java.simpleName)
                 .commit()
         }
     }

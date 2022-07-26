@@ -15,7 +15,7 @@ import com.driskimaulana.wonderfulindonesia.DetailActivity
 import com.driskimaulana.wonderfulindonesia.R
 import com.driskimaulana.wonderfulindonesia.model.ObjectWisata
 
-class ObjectWisataAdapter(val listObjectWisata: ArrayList<ObjectWisata>) : RecyclerView.Adapter<ObjectWisataAdapter.ObjectWisataHolder>() {
+class ObjectWisataAdapter(val listObjectWisata: ArrayList<ObjectWisata>?) : RecyclerView.Adapter<ObjectWisataAdapter.ObjectWisataHolder>() {
 
     private lateinit var context: Context
 
@@ -37,31 +37,33 @@ class ObjectWisataAdapter(val listObjectWisata: ArrayList<ObjectWisata>) : Recyc
     }
 
     override fun onBindViewHolder(holder: ObjectWisataHolder, position: Int) {
-        var currentObjectWisata: ObjectWisata = listObjectWisata[position]
+        if (listObjectWisata != null)
+        {
+            var currentObjectWisata: ObjectWisata = listObjectWisata[position]
 
-        holder.tvObjectWisata.text = currentObjectWisata.name
-        holder.tvDescription.text = currentObjectWisata.description
-        holder.tvLocation.text = currentObjectWisata.location
+            holder.tvObjectWisata.text = currentObjectWisata.name
+            holder.tvDescription.text = currentObjectWisata.description
+            holder.tvLocation.text = currentObjectWisata.location
 
-        Glide.with(holder.itemView.context)
-            .load(currentObjectWisata.imageCover)
-            .apply(RequestOptions().override(350, 350))
-            .into(holder.imgObjectWisata)
+            Glide.with(holder.itemView.context)
+                .load(currentObjectWisata.imageCover)
+                .apply(RequestOptions().override(350, 350))
+                .into(holder.imgObjectWisata)
 
 
 //        navigato to detail page
-        holder.itemView.setOnClickListener{
-            var intent: Intent = Intent(context, DetailActivity::class.java)
+            holder.itemView.setOnClickListener{
+                var intent: Intent = Intent(context, DetailActivity::class.java)
 
-            intent.putExtra(DetailActivity.EXTRA_DETAIL_KEY, currentObjectWisata)
+                intent.putExtra(DetailActivity.EXTRA_DETAIL_KEY, currentObjectWisata)
 
-            context.startActivity(intent)
+                context.startActivity(intent)
 
+            }
         }
-
     }
 
     override fun getItemCount(): Int {
-        return listObjectWisata.size
+        return listObjectWisata?.size ?: 0
     }
 }

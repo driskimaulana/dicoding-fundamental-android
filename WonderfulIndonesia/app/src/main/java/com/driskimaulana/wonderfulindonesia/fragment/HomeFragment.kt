@@ -6,18 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.driskimaulana.wonderfulindonesia.R
 import com.driskimaulana.wonderfulindonesia.adapter.ObjectWisataAdapter
-import com.driskimaulana.wonderfulindonesia.model.ObjectWisataData
+import com.driskimaulana.wonderfulindonesia.utils.Utils
 
 class HomeFragment : Fragment() {
 
     var mContext: Context? = null
-
-    public
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +31,9 @@ class HomeFragment : Fragment() {
 
         rv_objectWisata.layoutManager = LinearLayoutManager(this.context)
 
-        var adapter: ObjectWisataAdapter = ObjectWisataAdapter(ObjectWisataData.listData)
+        var wisatas = Utils.getInstance(mContext)?.allObjectWisata
+
+        var adapter: ObjectWisataAdapter = ObjectWisataAdapter(wisatas)
 
         rv_objectWisata.adapter = adapter
 
