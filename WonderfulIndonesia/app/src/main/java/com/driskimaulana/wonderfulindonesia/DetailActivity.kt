@@ -98,6 +98,7 @@ class DetailActivity : AppCompatActivity() {
 
     }
 
+
     private fun initView() {
         img_cover = findViewById(R.id.img_cover)
         tv_name = findViewById(R.id.tv_title)
