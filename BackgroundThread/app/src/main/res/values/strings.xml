@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BackgroundThread</string>
+    <string name="status" />
+    <string name="start_task" />
+    <string name="hidden_text" />
+    <string name="start_meow">Start Meow</string>
+</resources>
