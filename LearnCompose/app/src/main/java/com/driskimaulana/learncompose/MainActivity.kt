@@ -20,7 +20,14 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -30,18 +37,59 @@ import com.driskimaulana.learncompose.ui.theme.LearnComposeTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val lexendFontFamily = FontFamily(
+            Font(R.font.lexend_thin, FontWeight.Thin),
+            Font(R.font.lexend_light, FontWeight.Light),
+            Font(R.font.lexend_medium, FontWeight.Medium),
+            Font(R.font.lexend_medium, FontWeight.Normal),
+            Font(R.font.lexend_bold, FontWeight.Bold)
+        )
+
         setContent {
             val painter = painterResource(id = R.drawable.menglucu)
             val description = "Meng kucing putih lucu"
             val title = "Meng Putih Lucu"
 
-            Box(
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth(0.5f)
-                    .padding(16.dp)
+                    .fillMaxSize()
+                    .background(color = Color(0xFF010101))
             ) {
-                ImageCard(painter = painter, contentDescription = description, title = title)
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.5f)
+                        .padding(16.dp)
+                ) {
+                    ImageCard(painter = painter, contentDescription = description, title = title)
+                }
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp)
+                ) {
+                    Text(
+                        text = buildAnnotatedString {
+                            withStyle(style = SpanStyle(color = Color.Green, fontSize = 42.sp)) {
+                                append("J")
+                            }
+                            append("etpack ")
+                            withStyle(style = SpanStyle(color = Color.Green, fontSize = 42.sp)) {
+                                append("C")
+                            }
+                            append("ompose")
+                        },
+                        fontSize = 24.sp,
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = lexendFontFamily,
+                        textDecoration = TextDecoration.Underline
+                    )
+                }
+
             }
+
         }
     }
 
